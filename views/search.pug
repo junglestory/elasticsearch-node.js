@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  - function formatPrice(num) { return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") };
+  #container
+  .boxed
+    // CONTENT CONTAINER
+    #content-container
+      .row.pad-ver.bg-trans-dark
+        form.col-xs-12.col-sm-10.col-sm-offset-1.pad-hor(name='searchForm', id="search-form", action='/search', method='get')
+          input.form-control.input-lg(type='text', name='query', id='query', placeholder='Search..' ,onkeyup="search(event)", autocomplete='off')
+      // Page content
+      #page-content
+        .panel
+          .panel-body
+            .pad-hor.mar-top
+              h2.text-thin.mar-no
+                | #{totalCount} results found for: 
+                i.text-primary.text-normal "#{query}"
+            hr
+            ul.list-group.bord-no
+              if totalCount > 0
+                each result in results
+                  li.list-group-item.list-item-lg
+                    .media-heading.mar-no
+                      a.h4.text-primary(href='#') #{result.title}
+                    #{result.author} | #{result.publisher} | #{result.publish_date} | #{formatPrice(result.price)}원
+                    p.text-sm
+                      | #{result.summary}
+              else
+                li.list-group-item.list-item-lg
+                  p No results.
+            hr.hr-wide
+            // Pagination
+            .text-center
+              ul.pagination.mar-no
+                - for (var i=1; i<=pageCount; i++)
+                  li.active
+                    a(href='#') #{i}
+      // End page content
+    // END CONTENT CONTAINER
