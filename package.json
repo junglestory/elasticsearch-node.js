@@ -1,7 +1,6 @@
 {
   "name": "elasticsearch-node.js",
   "version": "1.0.0",
-  "private": true,
   "main": "app.js",
   "description": "elasticsearch client with node.js",
   "scripts": {
