@@ -5,21 +5,27 @@ var client = new elasticsearch.Client({
   log: 'trace'
 });
 
-function getSearch(index, type, query) {
-	client.search({
+function getSearch(index, type, query, pageNum, perPage, callback) {
+	return client.search({
 	  index: index,
 	  type: type,
+	  from: (pageNum - 1) * perPage,
+  	  size: perPage,
 	  body: {
 	    query: {
 	      match: {
-	        title: query
+	        "_all": query
 	      }
 	    }
 	  }
 	}).then(function (resp) {
-	    var hits = resp.hits.hits;
-	    console.log(hits);
+		var newArray = resp.hits.hits.map(function(hit) {
+		 return hit._source;
+		});
+		callback(newArray);
 	}, function (err) {
+		callback(err.message)
+
 	    console.trace(err.message);
 	});
 }

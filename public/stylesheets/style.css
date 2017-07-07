@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.pad-ver {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.bg-trans-dark {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+#container.effect .brand-title, #container.effect.mainnav-in .brand-title, #container.effect.mainnav-sm .brand-title, #container.effect.mainnav-lg .brand-title {
+    transition: color .35s;
+}
+.row {
+    margin: 0 -7.5px;
+}
