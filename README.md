@@ -1,5 +1,13 @@
 # Elasticsearch-node.js
-This is a sample for Elasticsearch clien with node.js.
+This application is a sample for Elasticsearch client with node.js and [Pug](https://pugjs.org/api/getting-started.html), Bootstrap.
+
+## Features
+* Match Query
+* Paginated
+
+## Requirements
+* NPM
+* Elasticsearch requires 5.5 or higher
 
 ## Installation
 * [Download](https://www.elastic.co/downloads/elasticsearch) and unzip the Elasticsearch official distribution.
